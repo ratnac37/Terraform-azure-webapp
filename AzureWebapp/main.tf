@@ -6,15 +6,15 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
+resource "azurerm_resource_group" "example1" {
   name     = "example-resources"
   location = "East US"
 }
 
-resource "azurerm_app_service_plan" "example" {
+resource "azurerm_app_service_plan" "example1" {
   name                = "example-appserviceplan1"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example1.location
+  resource_group_name = azurerm_resource_group.example1.name
 
   sku {
     tier = "Standard"
@@ -22,11 +22,11 @@ resource "azurerm_app_service_plan" "example" {
   }
 }
 
-resource "azurerm_app_service" "example" {
-  name                = "example-app-service123456789000"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
+resource "azurerm_app_service" "example1" {
+  name                = "example-app-service1234567890001"
+  location            = azurerm_resource_group.example1.location
+  resource_group_name = azurerm_resource_group.example1.name
+  app_service_plan_id = azurerm_app_service_plan.example1.id
 
   site_config {
     dotnet_framework_version = "v4.0"
